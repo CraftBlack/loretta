@@ -2,23 +2,17 @@ const events = [
     {
         hours: 0,
         minutes: 0,
-        message: '00:00 Nuevo día del servidor. Lanza tu deseo.', 
+        message: '00:00 Evento 1', 
     },
     {
-        hours: 5,
+        hours: 1,
         minutes: 0,
-        message: `
-            1. Reset del servidor. Ahora están nuevamente disponibles las siguientes recompensas:
-                * Entrenamiento Diario
-                * Calabozo de Legión
-                * Ayuda de Legión
-                * Recompensas de Legión.
-        ` 
+        message: '00:00 Evento 2', 
     },
     {
-        hours: 9,
+        hours: 2,
         minutes: 0,
-        message: '09:00 Recuerda realizar el Tesoro del Patriarca Avanzado.', 
+        message: '00:00 Evento 2', 
     }
 ];
 
