@@ -1,4 +1,10 @@
 require('dotenv').config();
+
+const https = require('http');
+const express = require('express');
+const app = express();
+const server = https.createServer(app);
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const events = require('./events');
@@ -51,9 +57,12 @@ const setTimers = () => {
     });
 };
 
-client.on('ready', () => {
-    console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
-    setTimers();
+server.listen(process.env.PORT, () => {
+    console.log(`Server up 🙌🏼 and running at 👉🏼 ${serverPort} port. 👽`);
+    client.on('ready', () => {
+        console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
+        setTimers();
+    });
 });
 
 client.login(process.env.TOKEN);
