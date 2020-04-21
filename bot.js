@@ -58,7 +58,7 @@ const setTimers = () => {
 };
 
 server.listen(process.env.PORT, () => {
-    console.log(`Server up 🙌🏼 and running at 👉🏼 ${serverPort} port. 👽`);
+    console.log(`Server up 🙌🏼 and running at 👉🏼 ${process.env.PORT} port. 👽`);
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
         setTimers();
