@@ -1,10 +1,5 @@
 require('dotenv').config();
-
-const https = require('http');
-const express = require('express');
-const app = express();
-const server = https.createServer(app);
-
+const http = require('http');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const events = require('./events');
@@ -57,6 +52,7 @@ const setTimers = () => {
     });
 };
 
+const server = http.createServer(() => {});
 server.listen(process.env.PORT, () => {
     console.log(`Server up 🙌🏼 and running at 👉🏼 ${process.env.PORT} port. 👽`);
     client.on('ready', () => {
