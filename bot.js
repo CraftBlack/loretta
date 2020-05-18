@@ -33,7 +33,7 @@ const sendMessage = args => {
 };
 
 const getDateTimeForNextMessage = ([today, hours, minutes]) => {
-    return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, hours, minutes, 0, 0);
+    return new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 0, 0);
 };
 
 const getCurrentDateTime = () => new Date();
@@ -55,11 +55,17 @@ const setTimers = () => {
     });
 };
 
+const setSelfCalling = () => {
+    setInterval(() => {
+        http.get(`https://loretta-bot.herokuapp.com/`);
+    }, 180000);
+};
 
 server.listen(process.env.PORT, () => {
     console.log(`Server up 🙌🏼 and running at 👉🏼 ${process.env.PORT} port. 👽`);
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
+        setSelfCalling();
         setTimers();
     });
 });
