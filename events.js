@@ -1,18 +1,18 @@
 const events = [
     {
-        hours: 19,
+        hours: 0,
         minutes: 0,
-        message: '00:00 Evento 3', 
+        message: '00:00 Erste Veranstaltung', 
     },
     {
-        hours: 20,
+        hours: 1,
         minutes: 0,
-        message: '00:00 Evento 4', 
+        message: '00:00 Zweiter Veranstaltung', 
     },
     {
-        hours: 21,
+        hours: 2,
         minutes: 0,
-        message: '00:00 Evento 5', 
+        message: '00:00 Dritter Veranstaltung', 
     }
 ];
 

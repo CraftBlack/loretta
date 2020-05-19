@@ -33,7 +33,7 @@ const sendMessage = args => {
 };
 
 const getDateTimeForNextMessage = ([today, hours, minutes]) => {
-    console.log({ td: new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 0, 0) })
+    console.log({ td: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, hours, minutes, 0, 0) })
     return new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, 0, 0);
 };
 
@@ -67,7 +67,7 @@ server.listen(process.env.PORT, () => {
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
         setSelfCalling();
-        //setTimers();
+        setTimers();
     });
 });
 
