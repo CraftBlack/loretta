@@ -58,7 +58,6 @@ const setTimers = () => {
 
 const setSelfCalling = () => {
     setInterval(() => {
-        console.log('ME LLLAMEEEEE');
         http.get(`http://loretta-bot.herokuapp.com/`);
     }, 180000);
 };
