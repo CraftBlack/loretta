@@ -67,7 +67,7 @@ server.listen(process.env.PORT, () => {
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
         setSelfCalling();
-        setTimers();
+        //setTimers();
     });
 });
 
