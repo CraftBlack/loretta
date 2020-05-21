@@ -49,7 +49,7 @@ const setTimers = () => {
 };
 
 const setSelfCalling = () => {
-    setInterval(() => http.get(`http://loretta-bot.herokuapp.com/`), 180000);
+    setInterval(() => http.get(process.env.DEPLOY_ENDPOINT), 180000);
 };
 
 server.listen(process.env.PORT, () => {
