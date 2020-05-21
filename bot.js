@@ -9,18 +9,13 @@ const events = require('./events');
 
 let invervalsId = [];
 
-const getRemainingMilliseconds = (next, today) => next - today;
-
 const cleanExecutedInternal = () => {
     let timer = invervalsId.shift();
-    console.log({ timer });
     clearInterval(timer);
-    console.log({ invervalsId }, 'timer cleaned');
 };
 
 const afterSendMessage = ([hours, minutes, message]) => {
     cleanExecutedInternal();
-    console.log(hours, minutes, message);
     setTimerToSendMessageAt(hours, minutes, message);
 };
 
@@ -28,12 +23,12 @@ const sendMessage = args => {
     const [, , message] = args;
     const channel = client.channels.get(process.env.CHANNEL_ID);
     channel.send(message);
-    console.log(message);
     afterSendMessage(args);
 };
 
+const getRemainingMilliseconds = (next, today) => next - today;
+
 const getDateTimeForNextMessage = ([today, hours, minutes]) => {
-    console.log({ td: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, hours, minutes, 0, 0) })
     return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, hours, minutes, 0, 0);
 };
 
@@ -43,11 +38,8 @@ const setTimerToSendMessageAt = (...args) => {
     const today = getCurrentDateTime();
     const next = getDateTimeForNextMessage([today, ...args]);
     const milliseconds = getRemainingMilliseconds(next, today);
-    console.log({ milliseconds });
     const intervalId = setInterval(() => sendMessage(args), milliseconds);
-    console.log({ intervalId });
     invervalsId.push(intervalId);
-    console.log({ invervalsId });
 };
 
 const setTimers = () => {
@@ -57,9 +49,7 @@ const setTimers = () => {
 };
 
 const setSelfCalling = () => {
-    setInterval(() => {
-        http.get(`http://loretta-bot.herokuapp.com/`);
-    }, 180000);
+    setInterval(() => http.get(`http://loretta-bot.herokuapp.com/`), 180000);
 };
 
 server.listen(process.env.PORT, () => {
