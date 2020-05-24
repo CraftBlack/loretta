@@ -19,10 +19,13 @@ const afterSendMessage = ([hours, minutes, message]) => {
     setTimerToSendMessageAt(hours, minutes, message);
 };
 
+const getChannel = () => {
+    return client.channels.get(process.env.CHANNEL_ID);
+}
+
 const sendMessage = args => {
     const [, , message] = args;
-    const channel = client.channels.get(process.env.CHANNEL_ID);
-    channel.send(message);
+    getChannel().send(message);
     afterSendMessage(args);
 };
 
@@ -56,6 +59,7 @@ server.listen(process.env.PORT, () => {
     console.log(`Server up 🙌🏼 and running at 👉🏼 ${process.env.PORT} port. 👽`);
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
+        getChannel().send(`Hola, estaré recordandote algunos eventos. 😃`);
         setSelfCalling();
         setTimers();
     });
