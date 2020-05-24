@@ -55,11 +55,13 @@ const setSelfCalling = () => {
     setInterval(() => http.get(process.env.DEPLOY_ENDPOINT), 180000);
 };
 
+
+
 server.listen(process.env.PORT, () => {
     console.log(`Server up 🙌🏼 and running at 👉🏼 ${process.env.PORT} port. 👽`);
     client.on('ready', () => {
         console.log(`Hi, my name is Loretta, and this 👉🏽 (${client.user.tag}) is an awkward id.`);
-        getChannel().send(`Hola, estaré recordandote algunos eventos. 😃`);
+        //getChannel().send(`Hola, estaré recordandote algunos eventos. 😃`)
         setSelfCalling();
         setTimers();
     });
@@ -68,3 +70,5 @@ server.listen(process.env.PORT, () => {
 app.get('/', (req, res) => res.send('Hello World!'));
 
 client.login(process.env.TOKEN);
+
+
