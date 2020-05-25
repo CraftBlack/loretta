@@ -32,29 +32,27 @@ You will notice that `express` is installed. It is used to make requests every 3
 - A popup will show up, click on **Create a server**.
 - Give your server a name and click on **Create**. Now we have to add our bot to our server.
 - Go back to [Discord's developer page](https://discord.com/developers/applications/) and click on **OAuth2** tab.
-- In the **Scopes** section, check **bot** option and click **copy**.
+- In the **Scopes** section, check **bot** option.
+- Down **Scopes** section, is the **Bot Permissions** section. Select **Administrator**.
+- Then click **copy** button that is in **Scopes** section.
 - Open a new tab and paste in the URL you've just copied, select your server and click on **Authorize**, and if there is a captcha just complete it.
 
 Now go to the main page of Discord. You will notice that you bot was added.
 
+>NOTE: There is a risk that Discord won't let your bot send messages to the channel, if it doesn't has admin pesmissions.
+
 #### Service
 
 - Clone this repo to your local machine.
-
 - Change the name of `.env_sample` to `.env`.
-
 - Rember the token that I talked to you before? Add it on `TOKEN` in `.env` file.
-
 - Then copy the last string of numbers that are in your channel's URL and paste it on `CHANNEL_ID` also in the `.env` file.
-
 - Also in `.env` file specify the `PORT` your bot will be running on.
-
 - Then specify your messages in the `events.js` file. It's an array of objects that has `hours`, `minutes` and `message` as properties.
 
 ## 🛠 Usage
 
 - Run `npm install`. This will only install 3 packages.
-
 - Finally `node bot.js` or `npm run start`
 
 You should see something like this:
@@ -63,7 +61,7 @@ You should see something like this:
 
 And that's it! 🥳 This bot will be sending message to your channel.
 
-> As I told you at the beginning, I suggest you to deploy it to somewhere in the cloud, so it will be always running and sending messages. But if you want to keep your computer on, it's ok.
+> NOTE: As I told you at the beginning, I suggest you to deploy it to somewhere in the cloud, so it will be always running and sending messages. But if you want to keep your computer on, it's ok.
 
 ## 🙌🏽 Contribute
 
