@@ -95,6 +95,7 @@ const setTimerForNextDay = (current, config, day) => {
       current,
     });
     console.log(getRemainingMilliseconds(futureDate, current))
+    
     setInterval(
       () => sendMessage(),
       getRemainingMilliseconds(futureDate, current)
