@@ -70,6 +70,7 @@ const setTimerPlusSevenDays = (current, config, day) => {
     ...config,
     current,
   });
+  console.log(getRemainingMilliseconds(futureDate, current))
   setInterval(
     () => sendMessage(),
     getRemainingMilliseconds(futureDate, current)
@@ -78,6 +79,7 @@ const setTimerPlusSevenDays = (current, config, day) => {
 
 const setTimerForToday = (current, config) => {
   const futureDate = buildDate({ day: current.getDate(), ...config, current });
+  console.log(getRemainingMilliseconds(futureDate, current))
   setInterval(
     () => sendMessage(),
     getRemainingMilliseconds(futureDate, current)
@@ -92,6 +94,7 @@ const setTimerForNextDay = (current, config, day) => {
       ...config,
       current,
     });
+    console.log(getRemainingMilliseconds(futureDate, current))
     setInterval(
       () => sendMessage(),
       getRemainingMilliseconds(futureDate, current)
