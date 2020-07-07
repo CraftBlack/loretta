@@ -104,12 +104,17 @@ class Bot {
   }
 
   cleanExecutedInternal(intervalId) {
-    const found = this.intervals.find((interval) => interval.config.id === intervalId);
-    if (found) {
-      const { interval, config } = found;
+    const index = this.intervals.findIndex((interval) => interval.config.id === intervalId);
+    if (index !== -1) {
+      const { interval, config } = this.intervals[index];
       clearInterval(interval);
+      this.removeElement(index);
       return config;
     }
+  }
+
+  removeElement(index) {
+    this.intervals.splice(1, index);
   }
 }
 
