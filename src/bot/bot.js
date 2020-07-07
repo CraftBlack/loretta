@@ -4,6 +4,8 @@ const {
   isTimeUp,
   getRemainingMilliseconds,
   buildDate,
+  buildNewSettings,
+  generateId,
 } = require("./utils");
 
 class Bot {
@@ -15,7 +17,8 @@ class Bot {
   setTimers(events) {
     events.forEach((config) => {
       config.days.forEach((day) => {
-        this.analizeAndSetTimer(config, day);
+        const newConfig = buildNewSettings(config, generateId(), day);
+        this.analizeAndSetTimer(newConfig, day);
       });
     });
   }
@@ -24,14 +27,14 @@ class Bot {
     const current = new Date();
     if (isSameDay(current, day)) {
       if (isTimeUp(current, config)) {
-        console.log('for seven')
+        console.log("for seven");
         this.setTimerPlusSevenDays(current, config);
       } else {
-        console.log('for today')
+        console.log("for today");
         this.setTimerForToday(current, config);
       }
     } else {
-        console.log('for next')
+      console.log("for next");
       this.setTimerForNextDay(current, config, day);
     }
   }
@@ -84,21 +87,29 @@ class Bot {
 
   sendMessage(config) {
     this.getChannel().send(config.message);
-    this.afterSendMessage();
+    this.afterSendMessage(config.id);
   }
 
   getChannel() {
     return this.client.channels.get(process.env.CHANNEL_ID);
   }
 
-  afterSendMessage() {
-    this.cleanExecutedInternal();
+  afterSendMessage(intervalId) {
+    const config = this.cleanExecutedInternal(intervalId);
+    this.setTimerAgain(config);
   }
 
-  cleanExecutedInternal() {
-    let { interval, config } = this.intervals.shift();
-    clearInterval(interval);
+  setTimerAgain(config) {
     this.setTimers([config]);
+  }
+
+  cleanExecutedInternal(intervalId) {
+    const found = this.intervals.find((interval) => interval.config.id === intervalId);
+    if (found) {
+      const { interval, config } = found;
+      clearInterval(interval);
+      return config;
+    }
   }
 }
 

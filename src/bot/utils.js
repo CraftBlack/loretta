@@ -1,7 +1,13 @@
+const uniqid = require('uniqid');
+
 const monthDay = (date) => date.getDate();
 
 const buildDate = ({ day, hours, minutes, current }) =>
   new Date(current.getFullYear(), current.getMonth(), day, hours, minutes, 0);
+
+const buildNewSettings = (config, index, day) => ({ ...config, days: [day], id: index });
+
+const generateId = () => uniqid();
 
 const isNegative = (number) => Math.sign(number) === -1;
 
@@ -31,4 +37,6 @@ module.exports = {
   getRemainingMilliseconds,
   isNegative,
   buildDate,
+  buildNewSettings,
+  generateId
 };
