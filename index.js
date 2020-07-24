@@ -10,7 +10,7 @@ const server = http.createServer(app);
 app.get("/", (req, res) => res.send("Hello World!"));
 
 const setSelfCalling = () =>
-  setInterval(() => http.get(process.env.DEPLOY_ENDPOINT), 180000);
+  setInterval(() => http.get(process.env.DEPLOY_ENDPOINT), 1500000);
 
 server.listen(process.env.PORT, () => {
   console.log(`Server running. 🚀`);
