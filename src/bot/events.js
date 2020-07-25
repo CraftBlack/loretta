@@ -1,4 +1,4 @@
-const days = require("./constants");
+const days = require("./days");
 
 const events = [
   {

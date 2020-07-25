@@ -7,7 +7,7 @@ const buildDate = ({ day, hours, minutes, current }) =>
 
 const buildNewSettings = (config, index, day) => ({ ...config, days: [day], id: index });
 
-const generateId = () => uniqid();
+const generateUniqueId = () => uniqid();
 
 const isNegative = (number) => Math.sign(number) === -1;
 
@@ -31,6 +31,8 @@ const isTimeUp = (date, config) => {
 
 const isSameDay = (date, day) => date.getDay() === day;
 
+const isValidIndex = (index) => index !== -1;
+
 module.exports = {
   isSameDay,
   isTimeUp,
@@ -38,5 +40,6 @@ module.exports = {
   isNegative,
   buildDate,
   buildNewSettings,
-  generateId
+  generateUniqueId,
+  isValidIndex
 };
